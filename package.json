@@ -1,0 +1,71 @@
+{
+  "name": "xbasicdebugger",
+  "displayName": "Alpha Anywhere XBasic Debugger",
+  "description": "Alpha Anywhere XBasic Debugger",
+  "publisher": "AlphaAnywhere",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "categories": [
+    "Debuggers"
+  ],
+  "activationEvents": [
+    "onDebug",
+    "onDebugInitialConfigurations"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "breakpoints": [
+      {
+        "language": "xbasic"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "xbasicdebugger",
+        "label": "XBasic WebSocket Debugger",
+        "program": "./out/debugServer.js",
+        "languages": [
+          "xbasic"
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "properties": {
+              "program": {
+                "type": "string",
+                "description": "The path to the program",
+                "default": "${workspaceFolder}/main.a5scr"
+              }
+            },
+            "required": [
+              "program"
+            ]
+          }
+        },
+        "initialConfigurations": [
+          {
+            "type": "xbasicdebugger",
+            "request": "launch",
+            "name": "Launch XBasic WebSocket Debugger",
+            "program": "${workspaceFolder}/main.a5scr"
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "@types/ws": "^8.5.9",
+    "typescript": "^5.0.0",
+    "vscode": "^1.1.34"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  }
+}

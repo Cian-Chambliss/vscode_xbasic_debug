@@ -2,6 +2,7 @@
   "name": "xbasicdebugger",
   "displayName": "Alpha Anywhere XBasic Debugger",
   "description": "Alpha Anywhere XBasic Debugger",
+  "icon": "images/alphaXbasicBadge.png",
   "publisher": "AlphaAnywhere",
   "version": "0.0.1",
   "engines": {
@@ -35,24 +36,57 @@
               "program": {
                 "type": "string",
                 "description": "The path to the program",
-                "default": "${workspaceFolder}/main.a5scr"
+                "default": "${workspaceFolder}/${file}"
+              },
+              "debugPort": {
+                "type": "number",
+                "default": 4711,
+                "description": "Port for DAP debugging"
+              },
+              "debugHost": {
+                "type": "string",
+                "default": "localhost",
+                "description": "Host for DAP debugging"
               }
             },
             "required": [
-              "program"
+              "program",
+              "debugPort",
+              "debugHost"
+            ]
+          },
+          "attach": {
+            "properties": {
+              "debugPort": {
+                "type": "number",
+                "default": 4711,
+                "description": "Port for DAP debugging"
+              },
+              "debugHost": {
+                "type": "string",
+                "default": "localhost",
+                "description": "Host for DAP debugging"
+              }
+            },
+            "required": [
+              "debugPort",
+              "debugHost"
             ]
           }
-        },
-        "initialConfigurations": [
-          {
-            "type": "xbasicdebugger",
-            "request": "launch",
-            "name": "Launch XBasic WebSocket Debugger",
-            "program": "${workspaceFolder}/main.a5scr"
-          }
-        ]
+        }
       }
     ]
+  },
+  "badges": [
+    {
+      "url": "https://www.alphasoftware.com/documentation/pages/images/alphaXbasicBadge.png",
+      "href": "https://www.alphasoftware.com/documentation/pages/images/alphaXbasicBadge.png",
+      "description": "Alpha Anywhere Xbasic Debugger"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cian-Chambliss/vscode_xbasic_debug.git"
   },
   "scripts": {
     "vscode:prepublish": "tsc -p ./",

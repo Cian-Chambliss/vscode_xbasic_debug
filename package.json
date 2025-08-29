@@ -73,6 +73,52 @@
               "debugHost"
             ]
           }
+        },
+        "initialConfigurations": [
+          {
+            "name": "Debug Xbasic Program",
+            "type": "xbasicdebugger",
+            "request": "launch",
+            "program": "${file}",
+            "debugHost": "localhost",
+            "debugPort": 4711,
+            "cwd": "${workspaceFolder}"
+          },
+          {
+            "name": "Attach to Xbasic Environment",
+            "type": "xbasicdebugger",
+            "request": "attach",
+            "debugHost": "localhost",
+            "debugPort": 4711
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "Xbasic Debugger: Launch",
+            "description": "Launch a program using Xbasic Debugger",
+            "body": {
+              "name": "Launch Xbasic Program",
+              "type": "xbasicdebugger",
+              "request": "launch",
+              "program": "${file}",
+              "debugHost": "localhost",
+              "debugPort": 4711
+            }
+          },
+          {
+            "label": "Xbasic Debugger: Attach",
+            "description": "Attach to a running Xbasic Environment",
+            "body": {
+              "name": "Attach to Xbasic Environment",
+              "type": "xbasicdebugger",
+              "request": "attach",
+              "debugHost": "localhost",
+              "debugPort": 4711
+            }
+          }
+        ],
+        "variables": {
+          "AskForProgram": "extension.xbasicdebugger.askForProgram"
         }
       }
     ]
